@@ -1,9 +1,9 @@
 const {mouseenter, mouseleave} = require('../dist/index.min');
 
-mouseenter('mouse-box-text', function (ev) {
-    console.log('box1 mouseevter：', ev, this);
+mouseenter('.mouse-box', function (ev) {
+    console.log('.mouse-box mouseevter：', ev, this);
 });
 
-mouseleave('mouse-box-text', function (ev) {
-    console.log('box1 mouseleave：', ev, this);
+mouseleave('.mouse-box', function (ev) {
+    console.log('.mouse-box mouseleave：', ev, this);
 });

@@ -1,7 +1,7 @@
 {
     "name": "zhf.mouse-event",
     "version": "1.0.0",
-    "description": "鼠标事件，mouseenter，mouseleave",
+    "description": "鼠标事件，mouseenter，mouseleave等。",
     "main": "dist/index.min.js",
     "scripts": {
         "codeLint": "cross-env NODE_ENV=production eslint --ext .js,.vue,.html ./",

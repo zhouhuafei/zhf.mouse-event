@@ -11,22 +11,12 @@
     }
 })('jsonToArray', function () {
     /**
-     * @description 鼠标事件
-     * @param {Object} json - json格式的对象{}
+     * @description 鼠标事件，mouseenter，mouseleave等。
      * */
-    function jsonToArray(json = {}) {
-        const arr = [];
-        if (json instanceof Array) {
-            json.forEach(function (v, i) {
-                arr.push({key: i, value: v});
-            });
-        } else {
-            Object.keys(json).forEach(function (attr) {
-                arr.push({key: attr, value: json[attr]});
-            });
-        }
-        return arr;
-    }
-
-    return jsonToArray;
+    return {
+        enter() {
+        },
+        leave() {
+        },
+    };
 });

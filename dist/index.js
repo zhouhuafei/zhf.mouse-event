@@ -6,7 +6,6 @@ var isDomParent = require('zhf.is-dom-parent');
 function fn(dom, cb, relatedTarget) {
     var isSelf = relatedTarget === dom; // 是否是自身
     var isChild = isDomParent(dom, relatedTarget); // 是否是子级
-    console.log(isSelf, isChild);
     if (!isSelf && !isChild) {
         // 如不是自身或者是子级，则触发。
         cb && cb.call(dom, dom);

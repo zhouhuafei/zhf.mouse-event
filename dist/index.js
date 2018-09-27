@@ -3,26 +3,28 @@
 var getDomArray = require('zhf.get-dom-array');
 var isDomParent = require('zhf.is-dom-parent');
 
-function fn(dom, cb, relatedTarget) {
+function isEnterOrLeave(dom, relatedTarget) {
     var isSelf = relatedTarget === dom; // 是否是自身
     var isChild = isDomParent(dom, relatedTarget); // 是否是子级
-    if (!isSelf && !isChild) {
-        // 如不是自身或者是子级，则触发。
-        cb && cb.call(dom, dom);
-    }
+    return !isSelf && !isChild;
 }
 
 module.exports = {
+    isEnterOrLeave: isEnterOrLeave,
     mouseenter: function mouseenter(el, cb) {
         var dom = getDomArray(el)[0];
         dom.addEventListener('mouseover', function (ev) {
-            fn(dom, cb, ev.relatedTarget);
+            if (isEnterOrLeave(dom, ev.relatedTarget) && typeof cb === 'function') {
+                cb && cb.call(dom, ev);
+            }
         });
     },
     mouseleave: function mouseleave(el, cb) {
         var dom = getDomArray(el)[0];
         dom.addEventListener('mouseout', function (ev) {
-            fn(dom, cb, ev.relatedTarget);
+            if (isEnterOrLeave(dom, ev.relatedTarget) && typeof cb === 'function') {
+                cb && cb.call(dom, ev);
+            }
         });
     }
 };
